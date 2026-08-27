@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículum Luis Alonso Herra</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background-color: #0b0b0b;
+    }
+    #bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+    header {
+      text-align: center;
+      padding: 25px 20px;
+      background: rgba(10, 10, 10, 0.88);
+      border-bottom: 2px solid #ff3333;
+      backdrop-filter: blur(5px);
+    }
+    
+    header h1 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Estilo moderno y renovado para los botones de navegación */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    nav button {
+      background: linear-gradient(135deg, #0077ff, #0044cc);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 11px 20px;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    nav button:hover {
+      background: linear-gradient(135deg, #0099ff, #0055ff);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 119, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Botón de retroceso estilizado */
+    .btn-regresar {
+      background: linear-gradient(135deg, #ff3333, #cc0000);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 15px;
+    }
+    .btn-regresar:hover {
+      background: linear-gradient(135deg, #ff4d4d, #e60000);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 51, 51, 0.6);
+    }
+
+    section {
+      display: none;
+      padding: 30px;
+      background: rgba(15, 15, 15, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin: 25px auto;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    section h2 {
+      color: #0099ff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-icons a {
+      font-size: 14px;
+      color: white;
+      text-decoration: none;
+      background: rgba(0, 119, 255, 0.15);
+      border: 1px solid rgba(0, 119, 255, 0.6);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .contact-icons a:hover {
+      background: rgba(0, 119, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .contact-icons a.fb-btn {
+      background: rgba(255, 51, 51, 0.15);
+      border-color: rgba(255, 51, 51, 0.6);
+    }
+    .contact-icons a.fb-btn:hover {
+      background: rgba(255, 51, 51, 0.4);
+    }
+
+    .software-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .software-list li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .software-list a {
+      display: inline-block;
+      background: linear-gradient(135deg, #0077ff, #0044cc);
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-sizing: border-box;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .software-list a:hover {
+      background: linear-gradient(135deg, #0099ff, #0055ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 119, 255, 0.5);
+    }
+
+    #translateBtn {
+      background: linear-gradient(135deg, #28a745, #1e7e34);
+      margin-top: 15px;
+      border: none;
+      padding: 9px 18px;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+      transition: all 0.3s ease;
+    }
+    #translateBtn:hover {
+      background: linear-gradient(135deg, #34ce57, #218838);
+      transform: translateY(-2px);
+    }
+
+    ul {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  
+  <header>
+    <h1>Currículum de Luis Alonso Herra Miranda</h1>
+    <nav>
+      <button onclick="toggleSection('perfil')">Perfil</button>
+      <button onclick="toggleSection('experiencia')">Experiencia</button>
+      <button onclick="toggleSection('habilidades')">Habilidades Técnicas</button>
+      <button onclick="toggleSection('formacion')">Formación</button>
+      <button onclick="toggleSection('blandas')">Habilidades Blandas</button>
+      <button onclick="toggleSection('software')">Software</button>
+    </nav>
+    <div class="contact-icons">
+      <a href="https://wa.me/50664680539" target="_blank">📱 WhatsApp</a>
+      <a href="tel:+50664680539">📞 Teléfono</a>
+      <a href="mailto:lhm91007@gmail.com">✉️ Email</a>
+      <a href="https://www.facebook.com/share/1D1UwLMTJp/" target="_blank" class="fb-btn">📘 Facebook</a>
+    </div>
+    <br>
+    <button id="translateBtn" onclick="googleTranslateElementInit()">🌐 Traducir</button>
+    <div id="google_translate_element" style="margin-top: 10px;"></div>
+  </header>
+
+  <section id="perfil" style="display: block;">
+    <h2>Perfil Profesional</h2>
+    <p>Técnico especializado en Informática Empresarial y Contabilidad con enfoque híbrido en soporte técnico avanzado y desarrollo digital...</p>
+  </section>
+
+  <section id="experiencia">
+    <button class="btn-regresar" onclick="toggleSection('perfil')">⬅ Volver al Inicio</button>
+    <h2>Experiencia Laboral</h2>
+    <p><strong>Administrador y Desarrollador</strong> en Proyecto-Mulltidigitalcr (2021-2026)...</p>
+    <p><strong>Auxiliar de Auditoría</strong> en Grupo VMA (2025-2026)...</p>
+    <p><strong>Vendedor Retail</strong> en Liberty-Claro (2025)...</p>
+    <p><strong>Auxiliar de Canales Digitales</strong> en Siman (2023-2024)...</p>
+    <p><strong>Auxiliar Contable</strong> en Bufet Los Rojas (2016)...</p>
+  </section>
+
+  <section id="habilidades">
+    <button class="btn-regresar" onclick="toggleSection('perfil')">⬅ Volver al Inicio</button>
+    <h2>Habilidades Técnicas</h2>
+    <ul>
+      <li>IA y Automatización</li>
+      <li>IT & Redes</li>
+      <li>Excel Avanzado</li>
+      <li>Diseño Digital</li>
+      <li>Idiomas: Español (Nativo), Inglés (Básico/Técnico)</li>
+    </ul>
+  </section>
+
+  <section id="formacion">
+    <button class="btn-regresar" onclick="toggleSection('perfil')">⬅ Volver al Inicio</button>
+    <h2>Formación Académica</h2>
+    <p>Técnico en Informática Empresarial | CTP Carlos Luis Fallas (2024)</p>
+    <p>Técnico Contable | CTP Carlos Luis Fallas (2016)</p>
+    <p>Auxiliar contable | INA Alajuela</p>
+    <p>Técnico Operante en Computadoras | INA Alajuela</p>
+    <p>Sociología (3er año) | Universidad Nacional (UNA)</p>
+  </section>
+
+  <section id="blandas">
+    <button class="btn-regresar" onclick="toggleSection('perfil')">⬅ Volver al Inicio</button>
+    <h2>Habilidades Blandas</h2>
+    <ul>
+      <li>Comunicación Asertiva y Trabajo en Equipo</li>
+      <li>Aprendizaje acelerado de nuevas tecnologías</li>
+      <li>Resolución de conflictos y excelencia en el servicio</li>
+    </ul>
+  </section>
+
+  <section id="software">
+    <button class="btn-regresar" onclick="toggleSection('perfil')">⬅ Volver al Inicio</button>
+    <h2>Sistemas y Aplicaciones Desarrolladas</h2>
+    <p>Explore los diferentes sistemas web interactivos creados:</p>
+    <ul class="software-list">
+      <li><a href="https://lhm91007-dev.github.io/Inventario/" target="_blank">📦 Sistema de Inventario</a></li>
+      <li><a href="https://lhm91007-dev.github.io/facturaci-n-/" target="_blank">🧾 Sistema de Facturación</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Administraci-n-mull/" target="_blank">⚙️ Administración Mull</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Mull-conciliacion/" target="_blank">📊 Mull Conciliación</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Ai.-data/" target="_blank">🤖 AI Data</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Proveecr/" target="_blank">🌐 Proveecr</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Mull--venta/" target="_blank">🛒 Mull Venta</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Mull-conta/" target="_blank">📑 Mull Conta</a></li>
+      <li><a href="https://lhm91007-dev.github.io/Planilla/?fbclid=IwdGRjcAT6sd9jbGNrBPqx3HBkb2YFZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEexSweQMiNqm-duNDJXk_g8v62pn_9WD55oxAqFCAggP62Mg_m2mWlDrpv_Jk_aem_L6XnqmwXzaN3xrORMNHYDw" target="_blank">💼 Sistema de Planilla</a></li>
+    </ul>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Configuración del fondo 3D dinámico con Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Geometría inicial (Torus Knot)
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+    camera.position.z = 50;
+
+    // Variables de animación de color y transformación temporal
+    let clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      // Rotación fluida en los tres ejes
+      torusKnot.rotation.x += 0.005;
+      torusKnot.rotation.y += 0.008;
+      torusKnot.rotation.z += 0.002;
+
+      // Cambio dinámico de color suave usando funciones trigonométricas basadas en el tiempo
+      const r = Math.sin(elapsedTime * 0.3) * 0.5 + 0.5;
+      const g = Math.sin(elapsedTime * 0.5 + 2) * 0.5 + 0.5;
+      const b = Math.sin(elapsedTime * 0.4 + 4) * 0.5 + 0.5;
+      material.color.setRGB(r, g, b);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Adaptabilidad ante cambios de tamaño de pantalla
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Control de visualización de secciones con desplazamiento suave hacia arriba
+    function toggleSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Inicializador de Google Translate
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
